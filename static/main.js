@@ -1,11 +1,8 @@
-// static/main.js
 document.addEventListener("DOMContentLoaded", () => {
-  // анимируем появление карточек с небольшой задержкой
   document.querySelectorAll('.post-card').forEach((el, idx) => {
     setTimeout(()=> el.classList.add('show'), 40 * idx);
   });
 
-  // обработка клика по кнопке лайка (AJAX)
   document.querySelectorAll('.like-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       e.preventDefault();
@@ -27,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.liked) {
           btn.classList.add('liked');
           countEl.classList.remove('pop');
-          // reflow for retrigger
           void countEl.offsetWidth;
           countEl.classList.add('pop');
         } else {
@@ -39,10 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // плавный фокус для textarea
   const ta = document.querySelector('.compose-card textarea');
   if (ta) {
     ta.addEventListener('focus', () => ta.style.borderColor = 'rgba(37,99,235,0.6)');
     ta.addEventListener('blur', () => ta.style.borderColor = 'rgba(15,23,42,0.06)');
   }
 });
+
