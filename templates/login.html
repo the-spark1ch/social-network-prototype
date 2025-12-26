@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h2 class="auth-title">Вход</h2>
+
+    <form class="auth-form" method="post" autocomplete="off">
+      <input
+        name="username"
+        placeholder="Логин"
+        required
+      >
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Пароль"
+        required
+      >
+
+      <div class="auth-actions">
+        <a class="nav-btn ghost" href="/register">Регистрация</a>
+        <button class="nav-btn primary" type="submit">Войти</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

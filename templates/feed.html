@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card compose-card">
+  <form id="post-form" method="post" autocomplete="off">
+    <textarea name="content" placeholder="Что нового?" required></textarea>
+    <div class="compose-actions">
+      <button type="submit" class="nav-btn primary">Опубликовать</button>
+    </div>
+  </form>
+</div>
+
+{% for post in posts %}
+<div class="card post-card" data-post-id="{{ post.id }}">
+  <div class="post-top">
+    <div class="post-meta">
+      <a class="post-author" href="/profile/{{ post.author.username }}">{{ post.author.username }}</a>
+      <div class="post-time">{{ post.timestamp.strftime('%d.%m.%Y %H:%M') }}</div>
+    </div>
+
+    <div class="post-actions">
+      <button class="like-btn {% if current_user in post.liked_by %}liked{% endif %}" data-post-id="{{ post.id }}" aria-pressed="{{ current_user in post.liked_by }}">
+        <span class="like-count">{{ post.likes_count }}</span>
+        <span class="like-text">Лайк</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="post-body">{{ post.content }}</div>
+</div>
+{% endfor %}
+
+{% endblock %}
